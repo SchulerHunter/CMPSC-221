@@ -25,7 +25,8 @@ public class savingsAccount {
 
     // Public method to calculate and append interest
     public void calculateMonthlyInterest() {
-        this.savingsBalance += ((annualInterestRate * savingsBalance) / 12);
+        double interest = ((annualInterestRate * savingsBalance) / 12);
+        this.savingsBalance += interest;
     }
 
     // Test code for savingsAccount class
