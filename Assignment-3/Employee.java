@@ -25,7 +25,7 @@ class SalariedCompensationModel extends CompensationModel {
 
     @Override
     public void raise(double percent) {
-        this.weeklySalary += this.weeklySalary*percent;
+        this.setWeeklySalary(this.getWeeklySalary()+this.getWeeklySalary()*percent);
     }
 
     @Override
@@ -72,7 +72,7 @@ class HourlyCompensationModel extends CompensationModel {
 
     @Override
     public void raise(double percent) {
-        this.wage += this.wage*percent;
+        this.setWage(this.getWage()+this.getWage()*percent);
     }
 
     @Override
@@ -123,7 +123,7 @@ class CommissionCompensationModel extends CompensationModel {
 
     @Override
     public void raise(double percent) {
-        this.commissionRate += this.getCommissionRate()*percent;
+        this.setCommissionRate(this.getCommissionRate()+this.getCommissionRate()*percent);
     }
 
     // Declare other class methods and overrides
@@ -135,7 +135,7 @@ class CommissionCompensationModel extends CompensationModel {
     @Override
     public String toString() {
         return String.format(
-                "Commission Compensation with:%nGross Sales of: %.2f%nCommission Rate of: %.2f%nEarnings: %.2f",
+                "Commission Compensation with:%nGross Sales of: %.2f%nCommission Rate of: %.3f%nEarnings: %.2f",
                 this.getGrossSales(), this.getCommissionRate(), this.earnings());
     }
 }
@@ -161,7 +161,8 @@ class BasePlusCommissionCompensationModel extends CommissionCompensationModel {
     
     @Override
     public void raise(double percent) {
-        this.baseSalary += this.getBaseSalary()*percent;
+        this.setBaseSalary(this.getBaseSalary()+this.getBaseSalary()*percent);
+        this.setCommissionRate(this.getCommissionRate()+this.getCommissionRate()*percent);
     }
 
     // Override toString
@@ -173,7 +174,7 @@ class BasePlusCommissionCompensationModel extends CommissionCompensationModel {
     @Override
     public String toString() {
         return String.format(
-                "Base Plus Commission Compensation with:%nGross Sales of: %.2f%nCommission Rate of: %.2f%nBase Salary of: %.2f%nEarnings: %.2f",
+                "Base Plus Commission Compensation with:%nGross Sales of: %.2f%nCommission Rate of: %.3f%nBase Salary of: %.2f%nEarnings: %.2f",
                 this.getGrossSales(), this.getCommissionRate(), this.getBaseSalary(), this.earnings());
     }
 }
