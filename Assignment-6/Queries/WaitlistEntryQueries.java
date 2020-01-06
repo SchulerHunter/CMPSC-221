@@ -51,7 +51,7 @@ public class WaitlistEntryQueries {
         
         connection = DBConnection.getConnection();
         try {
-            deleteWaitlistEntry = connection.prepareStatement("delete from waitlist where faculty = ?, date = ?, seats = ?");
+            deleteWaitlistEntry = connection.prepareStatement("delete from waitlist where faculty = ? and date = ? and seats = ?");
             deleteWaitlistEntry.setString(1, waitlist.getFaculty());
             deleteWaitlistEntry.setDate(2, waitlist.getDate());
             deleteWaitlistEntry.setInt(3, waitlist.getSeats());
@@ -68,7 +68,7 @@ public class WaitlistEntryQueries {
         connection = DBConnection.getConnection();
         ArrayList<WaitlistEntry> waitlist = new ArrayList<>();
         try {
-            getWaitlist = connection.prepareStatement("select faculty, seats from waitlist where date = ?");
+            getWaitlist = connection.prepareStatement("select faculty, seats from waitlist where date = ? order by timestamp");
             getWaitlist.setDate(1, date);
             resultSet = getWaitlist.executeQuery();
             
@@ -86,12 +86,29 @@ public class WaitlistEntryQueries {
         connection = DBConnection.getConnection();
         ArrayList<WaitlistEntry> waitlist = new ArrayList<>();
         try {
-            getWaitlist = connection.prepareStatement("select date, seats from waitlist order by faculty");
+            getWaitlist = connection.prepareStatement("select date, seats from waitlist where faculty = ? order by timestamp");
             getWaitlist.setString(1, faculty);
             resultSet = getWaitlist.executeQuery();
             
             while(resultSet.next()) {
                 waitlist.add(new WaitlistEntry(faculty, resultSet.getDate("date"), resultSet.getInt("seats")));
+            }
+        } catch(SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        return waitlist;
+    }
+    
+    public static ArrayList<WaitlistEntry> getWaitlist() {
+        
+        connection = DBConnection.getConnection();
+        ArrayList<WaitlistEntry> waitlist = new ArrayList<>();
+        try {
+            getWaitlist = connection.prepareStatement("select * from waitlist order by timestamp");
+            resultSet = getWaitlist.executeQuery();
+            
+            while(resultSet.next()) {
+                waitlist.add(new WaitlistEntry(resultSet.getString("faculty"), resultSet.getDate("date"), resultSet.getInt("seats")));
             }
         } catch(SQLException sqlException) {
             sqlException.printStackTrace();

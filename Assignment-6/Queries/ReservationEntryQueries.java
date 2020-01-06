@@ -53,7 +53,7 @@ public class ReservationEntryQueries {
         
         connection = DBConnection.getConnection();
         try {
-            deleteReservation = connection.prepareStatement("delete from reservations where faculty = ?, room = ?, date = ?");
+            deleteReservation = connection.prepareStatement("delete from reservations where faculty = ? and room = ? and date = ?");
             deleteReservation.setString(1, reservation.getFaculty());
             deleteReservation.setString(2, reservation.getRoom().getName());
             deleteReservation.setDate(3, reservation.getDate());
@@ -92,6 +92,39 @@ public class ReservationEntryQueries {
             
             while(resultSet.next()) {
                 reservations.add(new ReservationEntry(faculty, new RoomEntry(resultSet.getString("room"), resultSet.getInt("seats")), resultSet.getDate("date")));
+            }
+        } catch(SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        return reservations;
+    }
+    
+    public static ArrayList<ReservationEntry> getReservationsByRoom(RoomEntry room) {
+        connection = DBConnection.getConnection();
+        ArrayList<ReservationEntry> reservations = new ArrayList<>();
+        try {
+            getReservations = connection.prepareStatement("select faculty, seats, date from reservations where room = ?");
+            getReservations.setString(1, room.getName());
+            resultSet = getReservations.executeQuery();
+            
+            while(resultSet.next()) {
+                reservations.add(new ReservationEntry(resultSet.getString("faculty"), room, resultSet.getDate("date")));
+            }
+        } catch(SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        return reservations;
+    }
+    
+    public static ArrayList<ReservationEntry> getReservations() {
+        connection = DBConnection.getConnection();
+        ArrayList<ReservationEntry> reservations = new ArrayList<>();
+        try {
+            getReservations = connection.prepareStatement("select * from reservations");
+            resultSet = getReservations.executeQuery();
+            
+            while(resultSet.next()) {
+                reservations.add(new ReservationEntry(resultSet.getString("faculty"), new RoomEntry(resultSet.getString("room"), resultSet.getInt("seats")), resultSet.getDate("date")));
             }
         } catch(SQLException sqlException) {
             sqlException.printStackTrace();

@@ -7,14 +7,16 @@ import Queries.RoomEntryQueries;
 import Queries.Faculty;
 import Queries.ReservationEntryQueries;
 import Queries.WaitlistEntryQueries;
+import java.awt.GridLayout;
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneLayout;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -70,6 +72,15 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         listDateButton = new javax.swing.JButton();
         deleteDateButton = new javax.swing.JButton();
         dateStatusLabel = new javax.swing.JLabel();
+        roomTab = new javax.swing.JPanel();
+        roomLabel = new javax.swing.JLabel();
+        seatLabel = new javax.swing.JLabel();
+        seatSpinner = new javax.swing.JSpinner();
+        addRoomButton = new javax.swing.JButton();
+        listRoomsButton = new javax.swing.JButton();
+        deleteRoomButton = new javax.swing.JButton();
+        roomStatusLabel = new javax.swing.JLabel();
+        roomNameField = new javax.swing.JTextField();
         facultyTab = new javax.swing.JPanel();
         facultyLabel = new javax.swing.JLabel();
         facultyNameField = new javax.swing.JTextField();
@@ -77,15 +88,6 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         listFacultyButton = new javax.swing.JButton();
         deleteFacultyButton = new javax.swing.JButton();
         facultyStatusLabel = new javax.swing.JLabel();
-        roomTab = new javax.swing.JPanel();
-        roomLabel = new javax.swing.JLabel();
-        roomNameField = new javax.swing.JTextField();
-        seatLabel = new javax.swing.JLabel();
-        seatSpinner = new javax.swing.JSpinner();
-        addRoomButton = new javax.swing.JButton();
-        listRoomsButton = new javax.swing.JButton();
-        deleteRoomButton = new javax.swing.JButton();
-        roomStatusLabel = new javax.swing.JLabel();
         reserveTab = new javax.swing.JPanel();
         facultyReserveLabel = new javax.swing.JLabel();
         reserveFacultyComboBox = new javax.swing.JComboBox<>();
@@ -102,7 +104,12 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         statusDateComboBox = new javax.swing.JComboBox<>();
         statusSubmitFacultyButton = new javax.swing.JButton();
         statusSubmitDateButton = new javax.swing.JButton();
-        statusStatusLabel = new javax.swing.JLabel();
+        statusSubmitButton = new javax.swing.JButton();
+        statusLabel = new javax.swing.JLabel();
+        reservationStatusLabel = new javax.swing.JLabel();
+        reservationScrollPane = new javax.swing.JScrollPane();
+        waitlistStatusLabel = new javax.swing.JLabel();
+        waitlistScrollPane = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +143,7 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         });
 
         dateStatusLabel.setText("    ");
+        dateStatusLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout dateTabLayout = new javax.swing.GroupLayout(dateTab);
         dateTab.setLayout(dateTabLayout);
@@ -147,35 +155,118 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
                     .addComponent(dateStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(dateTabLayout.createSequentialGroup()
                         .addComponent(dateLabel)
-                        .addGap(40, 40, 40)
-                        .addGroup(dateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(dateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(dateTabLayout.createSequentialGroup()
+                                .addGap(118, 118, 118)
                                 .addComponent(deleteDateButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(listDateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
+                                .addComponent(listDateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(addDateButton))
-                            .addComponent(dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(294, 294, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dateTabLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(32, 32, Short.MAX_VALUE))
         );
         dateTabLayout.setVerticalGroup(
             dateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dateTabLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(20, 20, 20)
                 .addGroup(dateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateLabel)
                     .addComponent(dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(dateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteDateButton)
                     .addComponent(addDateButton)
+                    .addComponent(deleteDateButton)
                     .addComponent(listDateButton))
-                .addGap(128, 128, 128)
-                .addComponent(dateStatusLabel)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(dateStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         waitlistPanel.addTab("Dates", dateTab);
+
+        roomLabel.setText("Room Name: ");
+
+        seatLabel.setText("Seats Available:");
+
+        addRoomButton.setText("Add Room");
+        addRoomButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRoomButtonActionPerformed(evt);
+            }
+        });
+
+        listRoomsButton.setText("List Rooms");
+        listRoomsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listRoomsButtonActionPerformed(evt);
+            }
+        });
+
+        deleteRoomButton.setText("Delete Room");
+        deleteRoomButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteRoomButtonActionPerformed(evt);
+            }
+        });
+
+        roomStatusLabel.setText("    ");
+        roomStatusLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        roomNameField.setColumns(20);
+
+        javax.swing.GroupLayout roomTabLayout = new javax.swing.GroupLayout(roomTab);
+        roomTab.setLayout(roomTabLayout);
+        roomTabLayout.setHorizontalGroup(
+            roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roomTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roomTabLayout.createSequentialGroup()
+                        .addComponent(roomLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(roomNameField)
+                        .addContainerGap())
+                    .addGroup(roomTabLayout.createSequentialGroup()
+                        .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(roomStatusLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(roomTabLayout.createSequentialGroup()
+                                .addComponent(seatLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomTabLayout.createSequentialGroup()
+                                        .addComponent(deleteRoomButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(listRoomsButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(addRoomButton))
+                                    .addComponent(seatSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 17, Short.MAX_VALUE))))
+        );
+        roomTabLayout.setVerticalGroup(
+            roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roomTabLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(roomLabel)
+                    .addComponent(roomNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(seatLabel)
+                    .addComponent(seatSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteRoomButton)
+                    .addComponent(listRoomsButton)
+                    .addComponent(addRoomButton))
+                .addGap(18, 18, 18)
+                .addComponent(roomStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        waitlistPanel.addTab("Rooms", roomTab);
 
         facultyLabel.setText("Faculty Name: ");
 
@@ -203,6 +294,7 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         });
 
         facultyStatusLabel.setText("    ");
+        facultyStatusLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout facultyTabLayout = new javax.swing.GroupLayout(facultyTab);
         facultyTab.setLayout(facultyTabLayout);
@@ -210,115 +302,39 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
             facultyTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(facultyTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(facultyTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(facultyTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(facultyStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(facultyTabLayout.createSequentialGroup()
+                        .addGap(0, 139, Short.MAX_VALUE)
+                        .addComponent(deleteFacultyButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(listFacultyButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(addFacultyButton))
+                    .addGroup(facultyTabLayout.createSequentialGroup()
                         .addComponent(facultyLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(facultyTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(facultyTabLayout.createSequentialGroup()
-                                .addComponent(deleteFacultyButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(listFacultyButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addFacultyButton))
-                            .addComponent(facultyNameField))))
-                .addGap(76, 77, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(facultyNameField)))
+                .addContainerGap())
         );
         facultyTabLayout.setVerticalGroup(
             facultyTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(facultyTabLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(facultyTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(facultyLabel)
                     .addComponent(facultyNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(facultyTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteFacultyButton)
                     .addComponent(addFacultyButton)
-                    .addComponent(listFacultyButton))
-                .addGap(124, 124, 124)
-                .addComponent(facultyStatusLabel)
-                .addContainerGap(250, Short.MAX_VALUE))
+                    .addComponent(listFacultyButton)
+                    .addComponent(deleteFacultyButton))
+                .addGap(18, 18, 18)
+                .addComponent(facultyStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         waitlistPanel.addTab("Faculty", facultyTab);
-
-        roomLabel.setText("Room Name: ");
-
-        roomNameField.setColumns(20);
-
-        seatLabel.setText("Seats Available:");
-
-        addRoomButton.setText("Add Room");
-        addRoomButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addRoomButtonActionPerformed(evt);
-            }
-        });
-
-        listRoomsButton.setText("List Rooms");
-        listRoomsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listRoomsButtonActionPerformed(evt);
-            }
-        });
-
-        deleteRoomButton.setText("Delete Room");
-        deleteRoomButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteRoomButtonActionPerformed(evt);
-            }
-        });
-
-        roomStatusLabel.setText("    ");
-
-        javax.swing.GroupLayout roomTabLayout = new javax.swing.GroupLayout(roomTab);
-        roomTab.setLayout(roomTabLayout);
-        roomTabLayout.setHorizontalGroup(
-            roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(roomTabLayout.createSequentialGroup()
-                        .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(roomLabel)
-                            .addComponent(seatLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(roomNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                            .addComponent(seatSpinner)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomTabLayout.createSequentialGroup()
-                        .addComponent(deleteRoomButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(listRoomsButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addRoomButton))
-                    .addComponent(roomStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(76, 87, Short.MAX_VALUE))
-        );
-        roomTabLayout.setVerticalGroup(
-            roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomTabLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roomLabel)
-                    .addComponent(roomNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(seatLabel)
-                    .addComponent(seatSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(roomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteRoomButton)
-                    .addComponent(listRoomsButton)
-                    .addComponent(addRoomButton))
-                .addGap(107, 107, 107)
-                .addComponent(roomStatusLabel)
-                .addContainerGap(232, Short.MAX_VALUE))
-        );
-
-        waitlistPanel.addTab("Rooms", roomTab);
 
         facultyReserveLabel.setText("Faculty: ");
 
@@ -334,6 +350,7 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         });
 
         reserveStatusLabel.setText("   ");
+        reserveStatusLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout reserveTabLayout = new javax.swing.GroupLayout(reserveTab);
         reserveTab.setLayout(reserveTabLayout);
@@ -341,26 +358,25 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
             reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reserveTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(reserveSubmitButton)
-                        .addGroup(reserveTabLayout.createSequentialGroup()
-                            .addGroup(reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(facultyReserveLabel)
-                                .addComponent(dateReserveLabel)
-                                .addComponent(seatReserveLabel))
-                            .addGap(18, 18, 18)
-                            .addGroup(reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(reserveDateComboBox, 0, 299, Short.MAX_VALUE)
-                                .addComponent(reserveFacultyComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(seatReserveSpinner))))
-                    .addComponent(reserveStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGroup(reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(reserveStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reserveSubmitButton)
+                    .addGroup(reserveTabLayout.createSequentialGroup()
+                        .addGroup(reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(facultyReserveLabel)
+                            .addComponent(dateReserveLabel)
+                            .addComponent(seatReserveLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reserveFacultyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(reserveDateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(seatReserveSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         reserveTabLayout.setVerticalGroup(
             reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reserveTabLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(facultyReserveLabel)
                     .addComponent(reserveFacultyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -372,11 +388,11 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
                 .addGroup(reserveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(seatReserveLabel)
                     .addComponent(seatReserveSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(reserveSubmitButton)
                 .addGap(18, 18, 18)
-                .addComponent(reserveStatusLabel)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addComponent(reserveStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         waitlistPanel.addTab("Reserve Room", reserveTab);
@@ -399,7 +415,22 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
             }
         });
 
-        statusStatusLabel.setText("   ");
+        statusSubmitButton.setText("Check All");
+        statusSubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusSubmitButtonActionPerformed(evt);
+            }
+        });
+
+        statusLabel.setText("   ");
+        statusLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        reservationStatusLabel.setText("   ");
+        reservationStatusLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        waitlistStatusLabel.setText("   ");
+        waitlistStatusLabel.setToolTipText("");
+        waitlistStatusLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout statusTabLayout = new javax.swing.GroupLayout(statusTab);
         statusTab.setLayout(statusTabLayout);
@@ -407,26 +438,33 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
             statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(statusTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(statusStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(waitlistScrollPane)
+                    .addComponent(reservationScrollPane)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, statusTabLayout.createSequentialGroup()
+                        .addGap(0, 136, Short.MAX_VALUE)
+                        .addComponent(statusSubmitButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(statusSubmitDateButton)
+                        .addGap(23, 23, 23)
+                        .addComponent(statusSubmitFacultyButton))
                     .addGroup(statusTabLayout.createSequentialGroup()
                         .addGroup(statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(statusFacultyLabel)
                             .addComponent(statusDateLabel))
-                        .addGap(36, 36, 36)
-                        .addGroup(statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(statusTabLayout.createSequentialGroup()
-                                .addComponent(statusSubmitDateButton)
-                                .addGap(79, 79, 79)
-                                .addComponent(statusSubmitFacultyButton))
-                            .addComponent(statusDateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(statusFacultyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 105, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(statusDateComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(statusFacultyComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(waitlistStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reservationStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(statusLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         statusTabLayout.setVerticalGroup(
             statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(statusTabLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(statusFacultyLabel)
                     .addComponent(statusFacultyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -434,13 +472,22 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
                 .addGroup(statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(statusDateLabel)
                     .addComponent(statusDateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addGroup(statusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(statusSubmitFacultyButton)
-                    .addComponent(statusSubmitDateButton))
-                .addGap(68, 68, 68)
-                .addComponent(statusStatusLabel)
-                .addContainerGap(283, Short.MAX_VALUE))
+                    .addComponent(statusSubmitDateButton)
+                    .addComponent(statusSubmitButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(statusLabel)
+                .addGap(18, 18, 18)
+                .addComponent(reservationStatusLabel)
+                .addGap(18, 18, 18)
+                .addComponent(reservationScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(waitlistStatusLabel)
+                .addGap(18, 18, 18)
+                .addComponent(waitlistScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         waitlistPanel.addTab("Status", statusTab);
@@ -490,7 +537,25 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         // Delete the faculty to the faculty table
         String name = facultyNameField.getText();
         if (Faculty.deleteFaculty(name)) {
-            facultyStatusLabel.setText(name+" has been removed from the faculty table.");
+            facultyStatusLabel.setText("<html>"+name+" has been removed from the faculty table.<br/>");
+            ArrayList<ReservationEntry> reservations = ReservationEntryQueries.getReservationsByFaculty(name);
+            if (!reservations.isEmpty()) {
+                reservations.forEach((reservation) -> {
+                    ReservationEntryQueries.deleteReservation(reservation);
+                    RoomEntry room = reservation.getRoom();
+                    Date date = reservation.getDate();
+                    ArrayList<WaitlistEntry> waitlist = WaitlistEntryQueries.getWaitlistByDate(date);
+                    for (WaitlistEntry entry : waitlist) {
+                        if (entry.getSeats() <= room.getSeats()) {
+                            ReservationEntryQueries.addReservation(new ReservationEntry(entry.getFaculty(), room, date));
+                            WaitlistEntryQueries.deleteWaitlistEntry(entry);
+                            facultyStatusLabel.setText(facultyStatusLabel.getText()+"Reserved "+room.getName()+" for "+entry.getFaculty()+" on "+date+".<br/>");
+                            break;
+                        }
+                    }
+                });
+                facultyStatusLabel.setText(facultyStatusLabel.getText()+"All reservations for "+name+" have been removed.</html>");
+            }
         } else {
             facultyStatusLabel.setText(name+" could not be removed from the faculty table.");
         }
@@ -503,11 +568,11 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         // Add the date to the date table
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         String spinnerValue = formater.format(dateSpinner.getValue());
-        Date day = Date.valueOf(spinnerValue);
-        if (Dates.addDate(day)) {
-            dateStatusLabel.setText(day+" has been added to the dates table.");
+        Date date = Date.valueOf(spinnerValue);
+        if (Dates.addDate(date)) {
+            dateStatusLabel.setText(date+" has been added to the dates table.");
         } else {
-            dateStatusLabel.setText(day+" could not be added to the dates table.");
+            dateStatusLabel.setText(date+" could not be added to the dates table.");
         }
         
         // Rebuild date combo box
@@ -518,11 +583,23 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         // Remove the date from the date table
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         String spinnerValue = formater.format(dateSpinner.getValue());
-        Date day = Date.valueOf(spinnerValue);
-        if (Dates.deleteDate(day)) {
-            dateStatusLabel.setText(day+" has been removed from the dates table.");
+        Date date = Date.valueOf(spinnerValue);
+        if (Dates.deleteDate(date)) {
+            dateStatusLabel.setText("<html>"+date+" has been removed from the dates table.");
+            
+            ArrayList<ReservationEntry> reservations = ReservationEntryQueries.getReservationsByDate(date);
+            reservations.forEach((reservation) -> {
+                ReservationEntryQueries.deleteReservation(reservation);
+            });
+
+            ArrayList<WaitlistEntry> waitlist = WaitlistEntryQueries.getWaitlistByDate(date);
+            waitlist.forEach((entry) -> {
+                WaitlistEntryQueries.deleteWaitlistEntry(entry);
+            });
+
+            dateStatusLabel.setText(dateStatusLabel.getText()+"<br/>All waitlist and reservations for "+date+" have been removed.</html>");
         } else {
-            dateStatusLabel.setText(day+" could not be removed from the dates table.");
+            dateStatusLabel.setText(date+" could not be removed from the dates table.");
         }
         
         // Rebuild date combo box
@@ -533,7 +610,20 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         // Add the room to the room table
         RoomEntry room = new RoomEntry(roomNameField.getText(), (Integer) seatSpinner.getValue());
         if (RoomEntryQueries.addRoom(room)) {
-            roomStatusLabel.setText(room.getName()+" has been added to the room table.");
+            roomStatusLabel.setText("<html>"+room.getName()+" has been added to the room table.<br/>");
+            ArrayList<Date> dates = Dates.getDateList();
+            dates.forEach((date) -> {
+                ArrayList<WaitlistEntry> waitlist = WaitlistEntryQueries.getWaitlistByDate(date);
+                for (WaitlistEntry entry : waitlist) {
+                    if (entry.getSeats() <= room.getSeats()) {
+                        ReservationEntryQueries.addReservation(new ReservationEntry(entry.getFaculty(), room, date));
+                        WaitlistEntryQueries.deleteWaitlistEntry(entry);
+                        roomStatusLabel.setText(roomStatusLabel.getText()+"Reserved "+room.getName()+" for "+entry.getFaculty()+" on "+date+".<br/>");
+                        break;
+                    }
+                }
+            });
+            roomStatusLabel.setText(roomStatusLabel.getText()+"</html>");
         } else {
             roomStatusLabel.setText(room.getName()+" could not be added to the room table.");
         }
@@ -543,7 +633,52 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         // Remove room from room table
         RoomEntry room = RoomEntryQueries.getRoom(roomNameField.getText());
         if (RoomEntryQueries.deleteRoom(room)) {
-            roomStatusLabel.setText(room.getName()+" has been removed from the room table.");
+            roomStatusLabel.setText("<html>"+room.getName()+" has been removed from the room table.<br/>");
+            ArrayList<ReservationEntry> reservations = ReservationEntryQueries.getReservationsByRoom(room);
+            if (!reservations.isEmpty()) {
+                for (ReservationEntry reservation : reservations) {
+                    ReservationEntryQueries.deleteReservation(reservation);
+                    Date date = reservation.getDate();
+                    String faculty = reservation.getFaculty();
+                    Integer seatsReq = reservation.getRoom().getSeats();
+                    ArrayList<RoomEntry> reservedRooms = ReservationEntryQueries.getRoomsByDate(date);
+                    ArrayList<RoomEntry> possibleRooms = RoomEntryQueries.getRooms();
+                    Integer minSeats = Integer.MAX_VALUE;
+
+                    reservedRooms.forEach((reservedRoom) -> {
+                        new ArrayList<>(possibleRooms).forEach((possibleRoom) -> {
+                            if (reservedRoom.getName().equals(possibleRoom.getName())) {
+                                possibleRooms.remove(possibleRoom);
+                            }
+                        });
+                    });
+
+                    for (RoomEntry posRoom : new ArrayList<>(possibleRooms)) {
+                        Integer seats = posRoom.getSeats();
+                        if (seats < seatsReq) {
+                            possibleRooms.remove(posRoom);
+                        } else if (seats < minSeats) {
+                            Collections.swap(possibleRooms, 0, possibleRooms.indexOf(posRoom));
+                            minSeats = seats;
+                        }
+                    }
+
+                    if (possibleRooms.size() > 0) {
+                        if (ReservationEntryQueries.addReservation(new ReservationEntry(faculty, possibleRooms.get(0), date))) {
+                            roomStatusLabel.setText(roomStatusLabel.getText()+possibleRooms.get(0).getName()+" reserved for "+faculty+" on "+date.toString()+"<br/>");
+                        } else {
+                            roomStatusLabel.setText(roomStatusLabel.getText()+"An error occured while reserving the room for "+faculty+"<br/>");
+                        }
+                    } else {
+                        if (WaitlistEntryQueries.addWaitlistEntry(new WaitlistEntry(faculty, date, seatsReq))) {
+                            roomStatusLabel.setText(roomStatusLabel.getText()+"No rooms available for "+seatsReq+"<br/>"+faculty+" waitlisted for "+date.toString()+"<br/>");
+                        } else {
+                            roomStatusLabel.setText(roomStatusLabel.getText()+faculty+" is already waitlisted for "+date.toString()+"<br/>");
+                        }
+                    }
+                }
+            }
+            roomStatusLabel.setText(roomStatusLabel.getText()+"</html>");
         } else {
             roomStatusLabel.setText(room.getName()+" could not be removed from the room table.");
         }
@@ -622,29 +757,148 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
         String faculty = (String) statusFacultyComboBox.getSelectedItem();
         ArrayList<ReservationEntry> reservations = ReservationEntryQueries.getReservationsByFaculty(faculty);
         ArrayList<WaitlistEntry> waitlist = WaitlistEntryQueries.getWaitlistByFaculty(faculty);
-        statusStatusLabel.setText("<html>Reservations for "+faculty+":<br/>");
+        reservationStatusLabel.setText("Reservations for "+faculty+":");
+        
+        JPanel reservationScrollPanel = new JPanel(new GridLayout(0,2,10,10));
         reservations.forEach((reservation) -> {
-            statusStatusLabel.setText(statusStatusLabel.getText()+"On "+reservation.getDate().toString()+" in "+reservation.getRoom().getName()+"<br/>");
+            JLabel label = new JLabel("On "+reservation.getDate().toString()+" in "+reservation.getRoom().getName());
+            JButton button = new JButton("Cancel Reservation");
+            button.addActionListener((java.awt.event.ActionEvent e) -> {
+                ReservationEntryQueries.deleteReservation(reservation);
+                ArrayList<WaitlistEntry> waitlistDate = WaitlistEntryQueries.getWaitlistByDate(reservation.getDate());
+                for (WaitlistEntry entry : waitlistDate) {
+                    if(entry.getSeats() <= reservation.getRoom().getSeats()) {
+                        if (ReservationEntryQueries.addReservation(new ReservationEntry(entry.getFaculty(), reservation.getRoom(), reservation.getDate()))) {
+                            statusLabel.setText(reservation.getRoom().getName()+" reserved for "+entry.getFaculty()+" on "+reservation.getDate().toString());
+                            WaitlistEntryQueries.deleteWaitlistEntry(entry);
+                            break;
+                        } else {
+                            statusLabel.setText("An error occured while reserving the room.");
+                        }
+                    }
+                }
+                statusSubmitFacultyButtonActionPerformed(null);
+            });
+            reservationScrollPanel.add(label);
+            reservationScrollPanel.add(button);
         });
-        statusStatusLabel.setText(statusStatusLabel.getText()+"<br/>Waitlist items for "+faculty+":<br/>");
-        waitlist.forEach((waitItem) -> {
-            statusStatusLabel.setText(statusStatusLabel.getText()+"On "+waitItem.getDate().toString()+" for "+waitItem.getSeats()+" seats<br/>");
+        reservationScrollPane.setViewportView(reservationScrollPanel);
+        reservationScrollPane.revalidate();
+        reservationScrollPane.repaint();
+        
+        waitlistStatusLabel.setText("Waitlist items for "+faculty+":");
+        JPanel waitlistScrollPanel = new JPanel(new GridLayout(0,2,10,10));
+        waitlist.forEach((entry) -> {
+            JLabel label = new JLabel("On "+entry.getDate().toString()+" for " + entry.getSeats());
+            JButton button = new JButton("Remove Waitlist");
+            button.addActionListener((java.awt.event.ActionEvent e) -> {
+                WaitlistEntryQueries.deleteWaitlistEntry(entry);
+                statusSubmitFacultyButtonActionPerformed(null);
+            });
+            waitlistScrollPanel.add(label);
+            waitlistScrollPanel.add(button);
         });
+        waitlistScrollPane.setViewportView(waitlistScrollPanel);
+        waitlistScrollPane.revalidate();
+        waitlistScrollPane.repaint();
     }//GEN-LAST:event_statusSubmitFacultyButtonActionPerformed
 
     private void statusSubmitDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusSubmitDateButtonActionPerformed
         Date date = (Date) statusDateComboBox.getSelectedItem();
         ArrayList<ReservationEntry> reservations = ReservationEntryQueries.getReservationsByDate(date);
         ArrayList<WaitlistEntry> waitlist = WaitlistEntryQueries.getWaitlistByDate(date);
-        statusStatusLabel.setText("<html>Reservations on "+date.toString()+":<br/>");
+        
+        reservationStatusLabel.setText("Reservations on "+date.toString()+":");
+        JPanel reservationScrollPanel = new JPanel(new GridLayout(0,2,10,10));
         reservations.forEach((reservation) -> {
-            statusStatusLabel.setText(statusStatusLabel.getText()+"For "+reservation.getFaculty()+" in "+reservation.getRoom().getName()+"<br/>");
+            JLabel label = new JLabel("For "+reservation.getFaculty()+" in "+reservation.getRoom().getName());
+            JButton button = new JButton("Cancel Reservation");
+            button.addActionListener((java.awt.event.ActionEvent e) -> {
+                ReservationEntryQueries.deleteReservation(reservation);
+                for (WaitlistEntry entry : waitlist) {
+                    if(entry.getSeats() <= reservation.getRoom().getSeats()) {
+                        if (ReservationEntryQueries.addReservation(new ReservationEntry(entry.getFaculty(), reservation.getRoom(), date))) {
+                            statusLabel.setText(reservation.getRoom().getName()+" reserved for "+entry.getFaculty()+" on "+date.toString());
+                            WaitlistEntryQueries.deleteWaitlistEntry(entry);
+                            break;
+                        } else {
+                            statusLabel.setText("An error occured while reserving the room.");
+                        }
+                    }
+                }
+                statusSubmitDateButtonActionPerformed(null);
+            });
+            reservationScrollPanel.add(label);
+            reservationScrollPanel.add(button);
         });
-        statusStatusLabel.setText(statusStatusLabel.getText()+"<br/>Waitlist items on "+date.toString()+":<br/>");
-        waitlist.forEach((waitItem) -> {
-            statusStatusLabel.setText(statusStatusLabel.getText()+"For "+waitItem.getFaculty()+" for "+waitItem.getSeats()+" seats<br/>");
+        reservationScrollPane.setViewportView(reservationScrollPanel);
+        reservationScrollPane.revalidate();
+        reservationScrollPane.repaint();
+        
+        waitlistStatusLabel.setText("Waitlist items on "+date.toString()+":");
+        JPanel waitlistScrollPanel = new JPanel(new GridLayout(0,2,10,10));
+        waitlist.forEach((entry) -> {
+            JLabel label = new JLabel("For "+entry.getFaculty()+" for "+entry.getSeats());
+            JButton button = new JButton("Remove Waitlist");
+            button.addActionListener((java.awt.event.ActionEvent e) -> {
+                WaitlistEntryQueries.deleteWaitlistEntry(entry);
+                statusSubmitDateButtonActionPerformed(null);
+            });
+            waitlistScrollPanel.add(label);
+            waitlistScrollPanel.add(button);
         });
+        waitlistScrollPane.setViewportView(waitlistScrollPanel);
+        waitlistScrollPane.revalidate();
+        waitlistScrollPane.repaint();
     }//GEN-LAST:event_statusSubmitDateButtonActionPerformed
+
+    private void statusSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusSubmitButtonActionPerformed
+    ArrayList<ReservationEntry> reservations = ReservationEntryQueries.getReservations();
+    ArrayList<WaitlistEntry> waitlist = WaitlistEntryQueries.getWaitlist();
+        
+    reservationStatusLabel.setText("Reservations:");
+    JPanel reservationScrollPanel = new JPanel(new GridLayout(0,2,10,10));
+    reservations.forEach((reservation) -> {
+        JLabel label = new JLabel("For "+reservation.getFaculty()+" in "+reservation.getRoom().getName()+" on "+reservation.getDate().toString());
+        JButton button = new JButton("Cancel Reservation");
+        button.addActionListener((java.awt.event.ActionEvent e) -> {
+            ReservationEntryQueries.deleteReservation(reservation);
+            for (WaitlistEntry entry : waitlist) {
+                if(entry.getSeats() <= reservation.getRoom().getSeats()) {
+                    if (ReservationEntryQueries.addReservation(new ReservationEntry(entry.getFaculty(), reservation.getRoom(), reservation.getDate()))) {
+                        statusLabel.setText(reservation.getRoom().getName()+" reserved for "+entry.getFaculty()+" on "+reservation.getDate().toString());
+                        WaitlistEntryQueries.deleteWaitlistEntry(entry);
+                        break;
+                    } else {
+                        statusLabel.setText("An error occured while reserving the room.");
+                    }
+                }
+            }
+            statusSubmitButtonActionPerformed(null);
+        });
+        reservationScrollPanel.add(label);
+        reservationScrollPanel.add(button);
+    });
+    reservationScrollPane.setViewportView(reservationScrollPanel);
+    reservationScrollPane.revalidate();
+    reservationScrollPane.repaint();
+
+    waitlistStatusLabel.setText("Waitlist items:");
+    JPanel waitlistScrollPanel = new JPanel(new GridLayout(0,2,10,10));
+    waitlist.forEach((entry) -> {
+        JLabel label = new JLabel("For "+entry.getFaculty()+" for "+entry.getSeats()+" on "+entry.getDate().toString());
+        JButton button = new JButton("Remove Waitlist");
+        button.addActionListener((java.awt.event.ActionEvent e) -> {
+            WaitlistEntryQueries.deleteWaitlistEntry(entry);
+            statusSubmitButtonActionPerformed(null);
+        });
+        waitlistScrollPanel.add(label);
+        waitlistScrollPanel.add(button);
+    });
+    waitlistScrollPane.setViewportView(waitlistScrollPanel);
+    waitlistScrollPane.revalidate();
+    waitlistScrollPane.repaint();
+    }//GEN-LAST:event_statusSubmitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -711,6 +965,8 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
     private javax.swing.JButton listDateButton;
     private javax.swing.JButton listFacultyButton;
     private javax.swing.JButton listRoomsButton;
+    private javax.swing.JScrollPane reservationScrollPane;
+    private javax.swing.JLabel reservationStatusLabel;
     private javax.swing.JComboBox<String> reserveDateComboBox;
     private javax.swing.JComboBox<String> reserveFacultyComboBox;
     private javax.swing.JLabel reserveStatusLabel;
@@ -728,11 +984,14 @@ public class RoomSchedulerFrame extends javax.swing.JFrame
     private javax.swing.JLabel statusDateLabel;
     private javax.swing.JComboBox<String> statusFacultyComboBox;
     private javax.swing.JLabel statusFacultyLabel;
-    private javax.swing.JLabel statusStatusLabel;
+    private javax.swing.JLabel statusLabel;
+    private javax.swing.JButton statusSubmitButton;
     private javax.swing.JButton statusSubmitDateButton;
     private javax.swing.JButton statusSubmitFacultyButton;
     private javax.swing.JPanel statusTab;
     private javax.swing.JLabel title;
     private javax.swing.JTabbedPane waitlistPanel;
+    private javax.swing.JScrollPane waitlistScrollPane;
+    private javax.swing.JLabel waitlistStatusLabel;
     // End of variables declaration//GEN-END:variables
 }

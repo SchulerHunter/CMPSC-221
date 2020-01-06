@@ -84,40 +84,43 @@
                           <Component id="dateStatusLabel" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="dateLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
                                       <Component id="deleteDateButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="listDateButton" max="32767" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="listDateButton" min="-2" pref="93" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="addDateButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="dateSpinner" min="-2" pref="301" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="dateSpinner" min="-2" pref="413" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="455" pref="294" max="32767" attributes="0"/>
+                      <EmptySpace min="455" pref="32" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="dateSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="deleteDateButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="addDateButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteDateButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="listDateButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                      <Component id="dateStatusLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="243" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="dateStatusLabel" pref="368" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -162,6 +165,128 @@
             <Component class="javax.swing.JLabel" name="dateStatusLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="    "/>
+                <Property name="verticalAlignment" type="int" value="1"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="roomTab">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Rooms">
+                <Property name="tabTitle" type="java.lang.String" value="Rooms"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="roomLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="roomNameField" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="roomStatusLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="seatLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="deleteRoomButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="listRoomsButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="addRoomButton" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="seatSpinner" min="-2" pref="380" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="roomLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="roomNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="seatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="seatSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="deleteRoomButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="listRoomsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addRoomButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="roomStatusLabel" pref="328" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="roomLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Room Name: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="seatLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Seats Available:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="seatSpinner">
+            </Component>
+            <Component class="javax.swing.JButton" name="addRoomButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Room"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addRoomButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="listRoomsButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="List Rooms"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listRoomsButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="deleteRoomButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Delete Room"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteRoomButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="roomStatusLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="    "/>
+                <Property name="verticalAlignment" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="roomNameField">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -180,44 +305,43 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="facultyStatusLabel" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="139" max="32767" attributes="0"/>
+                              <Component id="deleteFacultyButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="listFacultyButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="addFacultyButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Component id="facultyLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="deleteFacultyButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="listFacultyButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="addFacultyButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="facultyNameField" max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="facultyNameField" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="76" pref="77" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="facultyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="facultyNameField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="deleteFacultyButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="addFacultyButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="listFacultyButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteFacultyButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                      <Component id="facultyStatusLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="250" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="facultyStatusLabel" pref="368" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -260,120 +384,7 @@
             <Component class="javax.swing.JLabel" name="facultyStatusLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="    "/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="roomTab">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Rooms">
-                <Property name="tabTitle" type="java.lang.String" value="Rooms"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="roomLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="seatLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="roomNameField" alignment="0" pref="305" max="32767" attributes="0"/>
-                                  <Component id="seatSpinner" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="deleteRoomButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="listRoomsButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="addRoomButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="roomStatusLabel" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="76" pref="87" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="roomLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="roomNameField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="seatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="seatSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="deleteRoomButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="listRoomsButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="addRoomButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="roomStatusLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="232" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="roomLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Room Name: "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="roomNameField">
-              <Properties>
-                <Property name="columns" type="int" value="20"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="seatLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Seats Available:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSpinner" name="seatSpinner">
-            </Component>
-            <Component class="javax.swing.JButton" name="addRoomButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Add Room"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addRoomButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="listRoomsButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="List Rooms"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listRoomsButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="deleteRoomButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Delete Room"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteRoomButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="roomStatusLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="    "/>
+                <Property name="verticalAlignment" type="int" value="1"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -390,35 +401,33 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="reserveSubmitButton" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="facultyReserveLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="dateReserveLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="seatReserveLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="reserveDateComboBox" alignment="0" pref="299" max="32767" attributes="0"/>
-                                      <Component id="reserveFacultyComboBox" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="seatReserveSpinner" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="reserveStatusLabel" max="32767" attributes="0"/>
+                          <Component id="reserveSubmitButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="facultyReserveLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dateReserveLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="seatReserveLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="reserveFacultyComboBox" min="-2" pref="368" max="-2" attributes="0"/>
+                                  <Component id="reserveDateComboBox" alignment="0" min="-2" pref="368" max="-2" attributes="0"/>
+                                  <Component id="seatReserveSpinner" min="-2" pref="368" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="reserveStatusLabel" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="76" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="facultyReserveLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="reserveFacultyComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -433,11 +442,11 @@
                           <Component id="seatReserveLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="seatReserveSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="reserveSubmitButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="reserveStatusLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="286" max="32767" attributes="0"/>
+                      <Component id="reserveStatusLabel" min="-2" pref="288" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -491,6 +500,7 @@
             <Component class="javax.swing.JLabel" name="reserveStatusLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="   "/>
+                <Property name="verticalAlignment" type="int" value="1"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -507,35 +517,42 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="statusStatusLabel" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="waitlistScrollPane" max="32767" attributes="0"/>
+                          <Component id="reservationScrollPane" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="136" max="32767" attributes="0"/>
+                              <Component id="statusSubmitButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="statusSubmitDateButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="statusSubmitFacultyButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="statusFacultyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="statusDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="statusSubmitDateButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                                      <Component id="statusSubmitFacultyButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="statusDateComboBox" min="-2" pref="299" max="-2" attributes="0"/>
-                                  <Component id="statusFacultyComboBox" min="-2" pref="299" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="statusDateComboBox" max="32767" attributes="0"/>
+                                  <Component id="statusFacultyComboBox" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="waitlistStatusLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="reservationStatusLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="statusLabel" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="105" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="statusFacultyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="statusFacultyComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -545,14 +562,23 @@
                           <Component id="statusDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="statusDateComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="statusSubmitFacultyButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="statusSubmitDateButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="statusSubmitButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                      <Component id="statusStatusLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="283" max="32767" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <Component id="statusLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="reservationStatusLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="reservationScrollPane" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="waitlistStatusLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="waitlistScrollPane" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -604,11 +630,41 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statusSubmitDateButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="statusStatusLabel">
+            <Component class="javax.swing.JButton" name="statusSubmitButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Check All"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statusSubmitButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="statusLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="   "/>
+                <Property name="verticalAlignment" type="int" value="1"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="reservationStatusLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="   "/>
+                <Property name="verticalAlignment" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="reservationScrollPane">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+            </Container>
+            <Component class="javax.swing.JLabel" name="waitlistStatusLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="   "/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="verticalAlignment" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="waitlistScrollPane">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
